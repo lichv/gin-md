@@ -1,0 +1,280 @@
+:root {
+	--bg-color: #ffffff;
+	--text-color: #333333;
+	--select-text-bg-color: #B5D6FC;
+	--select-text-font-color: auto;
+	--monospace: "Lucida Console",Consolas,"Courier",monospace;
+	--title-bar-height: 20px
+}
+html {
+	font-size: 14px;
+	background-color: #fff;
+	background-color: var(--bg-color);
+	color: #333;
+	color: var(--text-color);
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	-webkit-font-smoothing: antialiased
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	height: auto;
+	bottom: 0;
+	top: 0;
+	left: 0;
+	right: 0;
+	font-size: 1rem;
+	line-height: 1.42857143;
+	overflow-x: hidden;
+	background: inherit;
+	tab-size: 4
+}
+
+iframe {
+	margin: auto
+}
+
+a:active,a:hover {
+	outline: 0
+}
+
+#write {
+	margin: 0 auto 0;
+	height: auto;
+	width: inherit;
+	word-break: normal;
+	word-wrap: break-word;
+	position: relative;
+	white-space: normal;
+	overflow-x: visible;
+	padding-top: 36px
+}
+
+@media screen and (max-width:500px) {
+
+	#write {
+		padding-left: 20px;
+		padding-right: 20px
+	}
+
+}
+
+#write li>figure:last-child {
+	margin-bottom: .5rem
+}
+
+#write ol,#write ul {
+	position: relative
+}
+
+img {
+	max-width: 100%;
+	vertical-align: middle;
+	image-orientation: from-image
+}
+
+button,input,select,textarea {
+	font-size: inherit;
+	color: inherit;
+	font: inherit
+}
+
+input[type=checkbox],input[type=radio] {
+	line-height: normal;
+	padding: 0
+}
+
+*,:after,:before {
+	box-sizing: border-box
+}
+
+#write h1,#write h2,#write h3,#write h4,#write h5,#write h6,#write p,#write pre {
+	width: inherit
+}
+
+#write h1,#write h2,#write h3,#write h4,#write h5,#write h6,#write p {
+	position: relative
+}
+
+p {
+	line-height: inherit
+}
+
+h1,h2,h3,h4,h5,h6 {
+	page-break-after: avoid;
+	break-after: avoid-page;
+	page-break-inside: avoid;
+	orphans: 4
+}
+
+p {
+	orphans: 4
+}
+
+h1 {
+	font-size: 2rem
+}
+
+h2 {
+	font-size: 1.8rem
+}
+
+h3 {
+	font-size: 1.6rem
+}
+
+h4 {
+	font-size: 1.4rem
+}
+
+h5 {
+	font-size: 1.2rem
+}
+
+h6 {
+	font-size: 1rem
+}
+
+a {
+	cursor: pointer
+}
+
+sup.md-footnote {
+	padding: 2px;
+	padding-left: 4px;
+	padding-right: 4px;
+	background-color: rgba(238,238,238,.7);
+	color: #555;
+	border-radius: 4px;
+	cursor: pointer
+}
+
+sup.md-footnote a,sup.md-footnote a:hover {
+	color: inherit;
+	text-transform: inherit;
+	text-decoration: inherit
+}
+
+#write input[type=checkbox] {
+	cursor: pointer;
+	width: inherit;
+	height: inherit
+}
+
+figure {
+	overflow-x: auto;
+	margin: 0;
+	max-width: calc(100% + 16px);
+	padding: 0;
+	margin-left: 0;
+	margin-top: 1.2em;
+	margin-bottom: 1.2em
+}
+
+figure>table {
+	margin: 0
+}
+
+tr {
+	page-break-inside: avoid;
+	page-break-after: auto
+}
+
+thead {
+	display: table-header-group
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+	width: 100%;
+	overflow: auto;
+	page-break-inside: auto;
+	text-align: left
+}
+
+div.hr:focus {
+	cursor: none
+}
+
+#write pre {
+	white-space: pre-wrap
+}
+
+li div {
+	padding-top: 0
+}
+
+blockquote {
+	margin: 1rem 0
+}
+
+li .mathjax-block,li p {
+	margin: .5rem 0
+}
+
+li blockquote {
+	margin: 1rem 0
+}
+
+li {
+	margin: 0;
+	position: relative
+}
+
+blockquote>:last-child {
+	margin-bottom: 0
+}
+
+blockquote>:first-child,li>:first-child {
+	margin-top: 0
+}
+
+
+a img,img a {
+	cursor: pointer
+}
+
+code,pre,samp,tt {
+	font-family: var(--monospace)
+}
+
+kbd {
+	margin: 0 .1em;
+	padding: .1em .6em;
+	font-size: .8em;
+	color: #242729;
+	background: #fff;
+	border: 1px solid #adb3b9;
+	border-radius: 3px;
+	box-shadow: 0 1px 0 rgba(12,13,14,.2),0 0 0 2px #FFF inset;
+	white-space: nowrap;
+	vertical-align: middle
+}
+
+code {
+	text-align: left;
+	vertical-align: initial
+}
+
+table tr th {
+	border-bottom: 0
+}
+
+video {
+	max-width: 100%;
+	display: block;
+	margin: 0 auto
+}
+
+iframe {
+	max-width: 100%;
+	width: 100%;
+	border: none
+}
+
+mark {
+	background: #ff0;
+	color: #000
+}

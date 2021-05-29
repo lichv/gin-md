@@ -38,13 +38,21 @@ func main() {
 
 	engine := gin.Default()
 
-	iconPath := path.Join(".","favicon.icon")
+	iconPath := path.Join("./","favicon.ico")
+	fmt.Println(iconPath)
 	if lichv.IsExist(iconPath) {
+		fmt.Println("icon 存在")
 		engine.Use(favicon.New(iconPath))
+	}else{
+		fmt.Println("icon 不存在")
 	}
-	engine.Static("/_assets", path.Join(PublicPath,"/static"))
+	engine.Static("/static", path.Join(PublicPath,"/static"))
 	engine.LoadHTMLFiles(path.Join(PublicPath,"/index.html"))
 	engine.GET("/", func(c *gin.Context) {
+		c.HTML(http.StatusOK, "index.html", gin.H{})
+	})
+
+	engine.GET("/index.html", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "index.html", gin.H{})
 	})
 
