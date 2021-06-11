@@ -1,5 +1,5 @@
 {
-  "name": "markdown网页浏览工具",
+  "name": "markdown",
   "version": "1.0.0",
   "scripts": {
     "dev": "vite",
