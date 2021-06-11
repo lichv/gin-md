@@ -6,7 +6,7 @@
 		</div>
 		<div class="markdown-content">
 			<div class="markdown-side">
-				<el-input placeholder="输入关键字进行过滤" v-model="filterText" clearabl></el-input>
+				<el-input placeholder="输入关键字进行查询" v-model="filterText" clearabl></el-input>
 				<el-tree ref="tree" :data="items['children']" :props="defaultProps" @node-click="handleNodeClick" :filter-node-method="filterNode"></el-tree>
 			</div>
 			<div class="markdown-main" id="write">
@@ -17,46 +17,25 @@
 </template>
 <script>
 	import {watch} from 'vue'
-	import api from '/@/api';
+	import api from '../api';
 	import marked from 'marked'
 	export default {
 		name: 'ElMarkdownDisplay',
 		data() {
 			return {
+				allFiles:[],
+				searchedFiles:[],
+				items:[],
 				filterText: '',
 				defaultProps: {
 					children: 'children',
 					label: 'name'
-				},
-				drawer: false,
-				direction: 'rtl',
-				client:null,
-				imageUrl: '',
-				items:[],
+				},			
 				html:'',
 			}
 		},
 		props: {
-			stsUrl: {
-				type: String,
-				default: "/api/aliyun/sts"
-			},
-			region: {
-				type: String,
-				default: "oss-cn-shanghai"
-			},
-			bucket: {
-				type: String,
-				default: "easytc"
-			},
-			rootname: {
-				type: String,
-				default: "aegicare"
-			},
-			dirname: {
-				type: String,
-				default: "picture"
-			},
+			
 		},
 		watch:{
 			$router:{
@@ -66,7 +45,11 @@
 				},
 			},
 			filterText(val) {
-				this.$refs.tree.filter(val);
+				if (val) {
+					this.search(val)
+				}else{
+					this.items = this.allFiles
+				}
 			},
 		},
 
@@ -82,11 +65,30 @@
 				)
 		},
 		methods:{
+			search:function(val){
+				let _this = this;
+				api.searchRequest.send({"query":val})
+				.then(result => {
+					console.log('searchedFiles',result)
+					if (result.state==2000) {
+						_this.searchedFiles = {name: "Root",parent: "docs",path: "docs",relative: "",root: "docs",children:[]}
+						result.data.hits.forEach(function(item){
+							_this.searchedFiles.children.push({name: item.id,parent: "docs",path: "docs/"+item.id,relative: item.id,root: "docs",children:[]})
+						})
+						
+						_this.items = _this.searchedFiles
+					}
+				})
+				.catch(e => {
+					console.log(e)
+				})
+			},
 			getFiles:function(){
 				let _this = this;
 				api.getMarkdownFiles.send()
 				.then(result => {
 					if (result.state==2000) {
+						_this.allFiles = result.data
 						_this.items = result.data
 					}
 				})
@@ -123,7 +125,6 @@
 					relative = relative.substr(1)
 				}
 				if (relative.indexOf('.md') > -1) {
-					// this.$router.push({name:'readMarkdown',params:{pathMatch:relative}})
 					this.$router.push({path: '/item/'+relative})
 				}				
 			},

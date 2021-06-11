@@ -5,12 +5,12 @@ const router = createRouter({
     routes: [
     {
         path: '/',
-        component: () => import('/@/views/Index.vue'),
+        component: () => import('../views/Index.vue'),
     },
     {
         path: '/item/:pathMatch(.*)*',
         name: 'readMarkdown',
-        component: () => import('/@/views/Index.vue'),
+        component: () => import('../views/Index.vue'),
     },
     ]
 })

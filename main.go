@@ -47,7 +47,6 @@ func main() {
 	engine := gin.Default()
 
 	iconPath := path.Join("./","favicon.ico")
-	fmt.Println(iconPath)
 	if lichv.IsExist(iconPath) {
 		fmt.Println("icon 存在")
 		engine.Use(favicon.New(iconPath))
@@ -124,7 +123,6 @@ func main() {
 		var query = ""
 		searchFile := "search"
 		input, _ := GetMapFromContext(c)
-		fmt.Println(input)
 		inputQuery,ok := input["query"]
 		if ok {
 			query = lichv.Strval(inputQuery)
@@ -143,10 +141,7 @@ func main() {
 				size = 50
 			}
 		}
-		fmt.Println(searchFile)
-		fmt.Println(query)
-		fmt.Println(page)
-		fmt.Println(size)
+
 		result:= SearchFromIndex(searchFile, query, page, size)
 		c.JSON(200,gin.H{
 			"state":2000,
@@ -199,7 +194,6 @@ func BuildIndex(searchFile string,indexes []*Index)  {
 	if err != nil {
 		if os.IsNotExist(err) {
 			mapping := bleve.NewIndexMapping()
-			fmt.Println("创建索引文件")
 			index, err = bleve.New(searchFile, mapping)
 			if err != nil {
 				fmt.Println(err.Error())

@@ -5,8 +5,8 @@ import './base.css'
 import './github.css'
 import router from './router'
 import ElementPlus from 'element-plus'
-import '/@modules/element-plus/lib/theme-chalk/index.css'
-import '/@modules/github-markdown-css/github-markdown.css'
+import 'element-plus/lib/theme-chalk/index.css'
+import 'github-markdown-css/github-markdown.css'
 
 const app = createApp(App)
 
